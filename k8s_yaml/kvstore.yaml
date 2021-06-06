@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kvstore-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      maoApp: kvstore
+  template:
+#    metadata:
+#      labels
+    spec:
+      containers:
+      - name: kvstore
+        image: swr.cn-north-4.myhuaweicloud.com/mao-public/microservice.kvstore:1.0
+
+
