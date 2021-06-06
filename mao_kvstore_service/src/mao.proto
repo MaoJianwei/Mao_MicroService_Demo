@@ -1,0 +1,47 @@
+
+syntax = "proto3";
+
+option go_package = "grpc.maojianwei.com/api";
+//grpc.maojianwei.com/api
+//option java_multiple_files = true;
+//option java_package = "com.maojianwei.grpc.bigmao";
+//option java_outer_classname = "MaoOut";
+
+package main;
+
+service Bigmao {
+  rpc GetRequest(GetData) returns (GetResult) {}
+  rpc PutRequest(PutData) returns (PutResult) {}
+}
+
+message Key {
+  string key = 1;
+}
+
+message Value {
+  string value = 1;
+}
+
+message GetData {
+  Key key = 1;
+}
+
+message PutData {
+  Key key = 1;
+  Value value = 2;
+}
+
+message Result {
+  uint32 err = 1;
+  string msg = 2;
+}
+
+message GetResult {
+  Result result = 1;
+  Value value = 2;
+}
+
+message PutResult {
+  Result result = 1;
+  Value lastValue = 2;
+}
